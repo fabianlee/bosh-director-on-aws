@@ -1,0 +1,10 @@
+# the following files are constructed by aws-create-bosh-env.sh
+# and should not be added to source control
+bosh-alias.sh
+*.pem
+deploy-zookeeper.sh
+do-bosh.sh
+jumpbox-startup.sh
+set-director-passwd.yml
+update-cloud-config.sh
+upload-ubuntu-stemcell.sh
