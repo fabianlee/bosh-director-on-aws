@@ -344,7 +344,8 @@ bosh update-cloud-config bosh-deployment/aws/cloud-config.yml -v az=$awsAvailabi
 EOL
 
 cat >deploy-zookeeper.sh << EOL
-bosh -e $vpcName -d zookeeper deploy <(wget -O- https://raw.githubusercontent.com/cppforlife/zookeeper-release/master/manifests/zookeeper.yml)
+wget https://raw.githubusercontent.com/fabianlee/bosh-director-on-aws/master/zookeeper.yml
+bosh -e $vpcName -d zookeeper -v zookeeper_instances=3 deploy zookeeper.yml
 bosh deployments
 EOL
 
