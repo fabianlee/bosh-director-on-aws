@@ -334,20 +334,10 @@ bosh \$action \\
     --vars-file vars.yml \\
 EOL
 
-cat >upload-ubuntu-stemcell.sh <<EOL
-bosh upload-stemcell https://bosh.io/d/stemcells/bosh-aws-xen-hvm-ubuntu-trusty-go_agent?v=3586.60
-bosh stemcells
-EOL
-
 cat >update-cloud-config.sh <<EOL
 bosh update-cloud-config bosh-deployment/aws/cloud-config.yml -v az=$awsAvailabilityZone -v internal_cidr=$cidrBosh -v internal_gw=$boshGWIP -v subnet_id=$subnetBoshId
 EOL
 
-cat >deploy-zookeeper.sh << EOL
-wget https://raw.githubusercontent.com/fabianlee/bosh-director-on-aws/master/zookeeper.yml -O zookeeper.yml
-bosh -e $vpcName -d zookeeper deploy -v zookeeper_instances=3 zookeeper.yml
-bosh deployments
-EOL
 
 
 
