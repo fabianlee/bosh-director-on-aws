@@ -1,0 +1,4 @@
+---
+- type: replace
+  path: /resource_pools/name=vms/env/bosh/password?
+  value: ((vm_passwd))

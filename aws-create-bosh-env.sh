@@ -251,14 +251,6 @@ echo "Moving forward with routing table $natroutingId for subnet $subnetBoshId $
 echo
 echo "=== CREATING ENV SPECIFIC FILES ============="
 
-# operations file for setting director sudo passwd
-cat >set-director-passwd.yml << EOL
----
-- type: replace
-  path: /resource_pools/name=vms/env/bosh/password?
-  value: ((vm_passwd))
-EOL
-
 cat >bosh-alias.sh << EOL
 bosh alias-env $vpcName -e $directorIP --ca-cert <(bosh int ./creds.yml --path /director_ssl/ca)
 export BOSH_CLIENT=admin
